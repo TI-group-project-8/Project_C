@@ -1,3 +1,4 @@
+#include "game.hpp"
 #include <iostream>
 #include <stdio.h>
 #include <wiringPi.h>
