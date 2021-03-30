@@ -7,11 +7,11 @@
 #include <vector>
 using namespace std;
 
-int lcdRS = 25;
-int lcdE = 24;
-int lcdD4 = 23;
-int lcdD5 = 22;
-int lcdD6 = 21;
-int lcdD7 = 14;
+int lcdRS;
+int lcdE;
+int lcdD4;
+int lcdD5;
+int lcdD6;
+int lcdD7;
 
 void schrijfNaarLCD(int lcd, string tekst, int xPositie, int yPositie, int tijd);
