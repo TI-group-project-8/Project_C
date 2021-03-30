@@ -49,7 +49,7 @@ void startrps(){
         else if((inputp1==schaar)&&(inputp2==papier)){
             cout<<"Speler 1 wint!\n";
             p1score++;}
-        else if((inputp1==schaar)&&(inputp2==schaar))
+        else if((inputp1==schaar)&&(inputp2==schaar)){
             cout<<"Gelijkspel\n";}
 
         else{
