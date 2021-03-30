@@ -59,7 +59,12 @@ void startrps(){
     }
 }
 int main() {
+    wiringPiSetup();
+    int lcd = (2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
     startrps();
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
+    schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
+    schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
+    
 }
