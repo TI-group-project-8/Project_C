@@ -25,7 +25,7 @@ void startrps(){
 
         if((inputp1==steen)&&(inputp2==steen)){
             cout<<"Gelijkspel\n";}
-        else if(inputp1==steen&&inputp2==papier){
+        else if((inputp1==steen)&&(inputp2==papier)){
             cout<<"Speler 2 wint!\n";
             p2score++;}
         else if((inputp1==steen)&&(inputp2==schaar)){
@@ -49,7 +49,7 @@ void startrps(){
         else if((inputp1==schaar)&&(inputp2==papier)){
             cout<<"Speler 1 wint!\n";
             p1score++;}
-        else if((inputp1==schaar)&&(inputp2==schaar)
+        else if((inputp1==schaar)&&(inputp2==schaar))
             cout<<"Gelijkspel\n";}
 
         else{
