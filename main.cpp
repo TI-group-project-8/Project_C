@@ -3,6 +3,12 @@
 #include <string>
 using namespace std;
 
+int lcdRS = 25;
+int lcdE = 24;
+int lcdD4 = 23;
+int lcdD5 = 22;
+int lcdD6 = 21;
+int lcdD7 = 14;
 
 int p1score=0;
 int p2score=0;
@@ -59,7 +65,7 @@ void startrps(){
 }
 int main() {
     wiringPiSetup();
-    int lcd = (2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+    int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
     startrps();
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
