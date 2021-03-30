@@ -1,3 +1,4 @@
+#include "game.hpp"
 #include <iostream>
 #include <string>
 using namespace std;
