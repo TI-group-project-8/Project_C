@@ -49,9 +49,8 @@ void startrps(){
         else if((inputp1==schaar)&&(inputp2==papier)){
             cout<<"Speler 1 wint!\n";
             p1score++;}
-        else if((inputp1==schaar)&&(inputp2=="schaar"||"Schaar")){ //inputp2 == schaar?
-            cout<<"Gelijkspel\n";
-            p1score++;} //Waarom wordt hier bij gelijkspel de score ++ gedaan?
+        else if((inputp1==schaar)&&(inputp2==schaar)
+            cout<<"Gelijkspel\n";}
 
         else{
             cout<<"Er zijn ongeldige waardes ingevoerd\n";
