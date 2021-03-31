@@ -9,7 +9,7 @@ int lcdD5 = 22;
 int lcdD6 = 21;
 int lcdD7 = 30;
 
-//Pinnen Wpi 14 en 12 zijn gebruikt voor de LED-strip
+//Pinnen Wpi 14 (clock pin) en 12 (data pin) zijn gebruikt voor de LED-strip
 
 int p1score=0;
 int p2score=0;
