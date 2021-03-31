@@ -1,6 +1,5 @@
 #include "game.hpp"
 #include <iostream>
-#include <string>
 using namespace std;
 
 int lcdRS = 25;
@@ -9,6 +8,8 @@ int lcdD4 = 23;
 int lcdD5 = 22;
 int lcdD6 = 21;
 int lcdD7 = 30;
+
+//Pinnen Wpi 14 en 12 zijn gebruikt voor de LED-strip
 
 int p1score=0;
 int p2score=0;
@@ -65,11 +66,14 @@ void startrps(){
 }
 int main() {
     wiringPiSetup();
+    wiringPiSPISetup(0, 6000000);
     int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
     startrps();
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
     schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
     schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
-    
+    schrijfNaarLEDStrip({0, 1, 3, 2});
+    sleep(2);
+    schrijfNaarLEDStrip({-1, -1, -1, -1});
 }

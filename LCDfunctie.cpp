@@ -10,7 +10,7 @@
 //Pin 11: Wpi 23
 //Pin 12: Wpi 22
 //Pin 13: Wpi 21
-//Pin 14: Wpi 14
+//Pin 14: Wpi 30
 //Pin 15: 5v met 1k resistor
 //Pin 16:ground
 
