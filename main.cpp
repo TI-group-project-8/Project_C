@@ -8,7 +8,7 @@ int lcdE = 24;
 int lcdD4 = 23;
 int lcdD5 = 22;
 int lcdD6 = 21;
-int lcdD7 = 14;
+int lcdD7 = 30;
 
 int p1score=0;
 int p2score=0;
