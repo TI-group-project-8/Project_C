@@ -30,52 +30,65 @@ bool bluethen=LOW;
 bool redthen=LOW;
 bool yellowthen=LOW;
 
+bool purplenow=LOW;
+bool greennow=LOW;
+bool whitenow=LOW;
+bool bluenow=LOW;
+bool rednow=LOW;
+bool yellownow=LOW;
+
 //vector om kleuren in op te slaan
 vector<int> kleuren={};
 
-
+//Opslaan eerste kleur in een vector
 for (;;){
 	
 cout<<"Druk de knop in voor de eerste kleur: \n";
 delay(4000);
 
 //lezen input van knop
-bool purplenow=digitalRead(paars);
-bool greennow=digitalRead(groen);
-bool whitenow=digitalRead(wit);
-bool bluenow=digitalRead(blauw);
-bool rednow=digitalRead(rood);
-bool yellownow=digitalRead(geel);
+purplenow=digitalRead(paars);
+greennow=digitalRead(groen);
+whitenow=digitalRead(wit);
+bluenow=digitalRead(blauw);
+rednow=digitalRead(rood);
+yellownow=digitalRead(geel);
 
 	if(purplethen != purplenow){
 		if(purplenow==HIGH){
 			kleuren.push_back(5);
+			purplenow=LOW;
 			
 		}
 	}
 	if(greenthen != greennow){
 		if(greennow==HIGH){
 			kleuren.push_back(1);
+			greennow=LOW;
 		}
 	}
 	if(whitethen != whitenow){
 		if(whitenow==HIGH){
 			kleuren.push_back(4);
+			whitenow=LOW;
 		}
 	}
 	if(bluethen != bluenow){
 		if (bluenow==HIGH){
 			kleuren.push_back(0);
+			bluenow=LOW;
 			}
 	}
 	if(redthen != rednow){
 		if(rednow==HIGH){
 			kleuren.push_back(2);
+			rednow=LOW;
 		}
 	}
 	if(yellowthen != yellownow){
 		if (yellownow==HIGH){
 			kleuren.push_back(3);
+			yellownow=LOW;
 		}
 	}
 	purplethen = purplenow;
@@ -88,49 +101,57 @@ bool yellownow=digitalRead(geel);
 	 break;
 	}
 }
+	
 
+//Opslaan tweede kleur in een vector
 for (;;){
 	
 cout<<"Druk de knop in voor de tweede kleur: \n";
 delay(4000);
 
 //lezen input van knop
-bool purplenow=digitalRead(paars);
-bool greennow=digitalRead(groen);
-bool whitenow=digitalRead(wit);
-bool bluenow=digitalRead(blauw);
-bool rednow=digitalRead(rood);
-bool yellownow=digitalRead(geel);
+purplenow=digitalRead(paars);
+greennow=digitalRead(groen);
+whitenow=digitalRead(wit);
+bluenow=digitalRead(blauw);
+rednow=digitalRead(rood);
+yellownow=digitalRead(geel);
 
 	if(purplethen != purplenow){
 		if(purplenow==HIGH){
 			kleuren.push_back(5);
+			purplenow=LOW;
 			
 		}
 	}
 	if(greenthen != greennow){
 		if(greennow==HIGH){
 			kleuren.push_back(1);
+			greennow=LOW;
 		}
 	}
 	if(whitethen != whitenow){
 		if(whitenow==HIGH){
 			kleuren.push_back(4);
+			whitenow=LOW;
 		}
 	}
 	if(bluethen != bluenow){
 		if (bluenow==HIGH){
 			kleuren.push_back(0);
+			bluenow=LOW;
 			}
 	}
 	if(redthen != rednow){
 		if(rednow==HIGH){
 			kleuren.push_back(2);
+			rednow=LOW;
 		}
 	}
 	if(yellowthen != yellownow){
 		if (yellownow==HIGH){
 			kleuren.push_back(3);
+			yellownow=LOW;
 		}
 	}
 	purplethen = purplenow;
@@ -143,7 +164,8 @@ bool yellownow=digitalRead(geel);
 	 break;
 	}
 }
-
+	
+//Opslaan eerste kleur in een vector
 for (;;){
 	
 cout<<"Druk de knop in voor de derde kleur: \n";
@@ -159,32 +181,38 @@ bool yellownow=digitalRead(geel);
 
 	if(purplethen != purplenow){
 		if(purplenow==HIGH){
-			kleuren.push_back(5);	
+			kleuren.push_back(5);
+			purplenow=LOW;
 		}
 	}
 	if(greenthen != greennow){
 		if(greennow==HIGH){
 			kleuren.push_back(1);
+			greennow=LOW;
 		}
 	}
 	if(whitethen != whitenow){
 		if(whitenow==HIGH){
 			kleuren.push_back(4);
+			whitenow=LOW;
 		}
 	}
 	if(bluethen != bluenow){
 		if (bluenow==HIGH){
 			kleuren.push_back(0);
+			bluenow=LOW;
 			}
 	}
 	if(redthen != rednow){
 		if(rednow==HIGH){
 			kleuren.push_back(2);
+			rednow=LOW;
 		}
 	}
 	if(yellowthen != yellownow){
 		if (yellownow==HIGH){
 			kleuren.push_back(3);
+			yellownow=LOW;
 		}
 	}
 	purplethen = purplenow;
@@ -198,7 +226,8 @@ bool yellownow=digitalRead(geel);
 	 break;
 	}
 }
-
+	
+//Opslaan laaste kleur in een vector
 for (;;){
 	
 cout<<"Druk de knop in voor de laaste kleur: \n";
@@ -216,32 +245,38 @@ bool yellownow=digitalRead(geel);
 	if(purplethen != purplenow){
 		if(purplenow==HIGH){
 			kleuren.push_back(5);
+			purplenow=LOW;
 			
 		}
 	}
 	if(greenthen != greennow){
 		if(greennow==HIGH){
 			kleuren.push_back(1);
+			greennow=LOW;
 		}
 	}
 	if(whitethen != whitenow){
 		if(whitenow==HIGH){
 			kleuren.push_back(4);
+			whitenow=LOW;
 		}
 	}
 	if(bluethen != bluenow){
 		if (bluenow==HIGH){
 			kleuren.push_back(0);
+			bluenow=LOW;
 			}
 	}
 	if(redthen != rednow){
 		if(rednow==HIGH){
 			kleuren.push_back(2);
+			rednow=LOW;
 		}
 	}
 	if(yellowthen != yellownow){
 		if (yellownow==HIGH){
 			kleuren.push_back(3);
+			yellownow=LOW;
 		}
 	}
 	purplethen = purplenow;
