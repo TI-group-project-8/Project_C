@@ -21,11 +21,26 @@ int digitG = 13;
 
 int p1score=0;
 int p2score=0;
+string inputp2="";
+string naamplayer1;
+string naamplayer2;
+int p1score=0;
+int p2score=0;
+
+string inputp2="";
+string naamplayer1;
+string naamplayer2;
+int p1score=0;
+int p2score=0;
+
+void onrecieve(string message){
+    inputp2=message;}
 
 void startrps(){
     while(true){
+        publisher p(naamplayer1);
+        subscription s(naamplayer2, onrecieve);
         string inputp1="";
-        string inputp2="";
         string steen="steen";
         string papier="papier";
         string schaar= "schaar";
@@ -33,42 +48,43 @@ void startrps(){
         cin>>inputp1;
         if(inputp1=="exit"){
             break;
+        }else {
+            p.send(inputp1);
         }
-        cout<<"Kies uit: steen/papier/schaar\n";
-        cin>>inputp2;
-
-
+        sleep(10);
         if((inputp1==steen)&&(inputp2==steen)){
             cout<<"Gelijkspel\n";}
         else if((inputp1==steen)&&(inputp2==papier)){
-            cout<<"Speler 2 wint!\n";
+            cout<<naamplayer2<<" wint!\n";
             p2score++;}
         else if((inputp1==steen)&&(inputp2==schaar)){
-            cout<<"Speler 1 wint!\n";
+            cout<<naamplayer1<<" wint!\n";
             p1score++;}
 
 
         else if((inputp1==papier)&&(inputp2==steen)){
-            cout<<"Speler 1 wint!\n";
+            cout<<naamplayer1<<" wint!\n";
             p1score++;}
         else if((inputp1==papier)&&(inputp2==papier)){
             cout<<"Gelijkspel\n";}
         else if((inputp1==papier)&&(inputp2==schaar)){
-            cout<<"Speler 2 wint!\n";
+            cout<<naamplayer2<<" wint!\n";
             p2score++;}
 
 
         else if((inputp1==schaar)&&(inputp2==steen)){
-            cout<<"Speler 2 wint!\n";
+            cout<<naamplayer2<<" wint!\n";
             p2score++;}
         else if((inputp1==schaar)&&(inputp2==papier)){
-            cout<<"Speler 1 wint!\n";
+            cout<<naamplayer1<<" wint!\n";
             p1score++;}
         else if((inputp1==schaar)&&(inputp2==schaar)){
             cout<<"Gelijkspel\n";}
 
         else{
             cout<<"Er zijn ongeldige waardes ingevoerd\n";
+        inputp1="";
+        inputp2="";
         }
     }
 }
@@ -85,7 +101,12 @@ int main() {
     pinMode(digitF, OUTPUT);
     pinMode(digitG, OUTPUT);
 
+    cout<<"voer je eigen naam in\n";
+    cin>>naamplayer1;
+    cout<<"voer de naam van je medespeler in\n";
+    cin>>naamplayer2;
     startrps();
+    
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
     schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
