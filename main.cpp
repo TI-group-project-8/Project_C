@@ -19,14 +19,6 @@ int digitE = 7;
 int digitF = 3;
 int digitG = 13;
 
-int p1score=0;
-int p2score=0;
-string inputp2="";
-string naamplayer1;
-string naamplayer2;
-int p1score=0;
-int p2score=0;
-
 string inputp2="";
 string naamplayer1;
 string naamplayer2;
@@ -44,6 +36,8 @@ void startrps(){
         string steen="steen";
         string papier="papier";
         string schaar= "schaar";
+        inputp1="";
+        inputp2="";
         cout<<"Kies uit: steen/papier/schaar\n";
         cin>>inputp1;
         if(inputp1=="exit"){
@@ -51,7 +45,8 @@ void startrps(){
         }else {
             p.send(inputp1);
         }
-        sleep(10);
+        while(inputp2==""){
+            sleep(0.1);}
         if((inputp1==steen)&&(inputp2==steen)){
             cout<<"Gelijkspel\n";}
         else if((inputp1==steen)&&(inputp2==papier)){
@@ -91,7 +86,7 @@ void startrps(){
 int main() {
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
-    int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+    //int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
 
     pinMode(digitA, OUTPUT);
     pinMode(digitB, OUTPUT);
