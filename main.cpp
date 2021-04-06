@@ -11,6 +11,14 @@ int lcdD7 = 30;
 
 //Pinnen Wpi 14 en 12 zijn gebruikt voor de LED-strip
 
+int digitA = 2;
+int digitB = 0;
+int digitC = 8;
+int digitD = 9;
+int digitE = 7;
+int digitF = 3;
+int digitG = 13;
+
 int p1score=0;
 int p2score=0;
 
@@ -68,6 +76,15 @@ int main() {
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
     int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+
+    pinMode(digitA, OUTPUT);
+    pinMode(digitB, OUTPUT);
+    pinMode(digitC, OUTPUT);
+    pinMode(digitD, OUTPUT);
+    pinMode(digitE, OUTPUT);
+    pinMode(digitF, OUTPUT);
+    pinMode(digitG, OUTPUT);
+
     startrps();
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
@@ -76,4 +93,11 @@ int main() {
     schrijfNaarLEDStrip({0, 1, 3, 2});
     sleep(2);
     schrijfNaarLEDStrip({-1, -1, -1, -1});
+
+    for(unsigned int i = 0; i < 10; i++){
+        schrijfNaarDigit(i, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+        sleep(1);
+        schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+    }
+
 }
