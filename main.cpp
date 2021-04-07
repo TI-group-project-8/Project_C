@@ -132,7 +132,7 @@ int main() {
     pinMode(digitF, OUTPUT);
     pinMode(digitG, OUTPUT);
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
     cout<<"voer je eigen naam in\n";
     cin>>naamplayer1;
     cout<<"voer de naam van je medespeler in\n";
@@ -141,7 +141,7 @@ int main() {
     
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
-=======
+//=======
     //startrps();
     //cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     //cout<<"De score van speler 2 is: "<<p2score<<"!\n";
@@ -158,7 +158,7 @@ int main() {
 
     mastermind(kleuren);
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
     schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
     schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
     schrijfNaarLEDStrip({0, 1, 3, 2});
