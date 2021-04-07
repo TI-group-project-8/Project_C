@@ -138,7 +138,7 @@ void mastermind(const vector<int> & kleuren){
 int main() {
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
-   // int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+   int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
 
     pinMode(digitA, OUTPUT);
     pinMode(digitB, OUTPUT);
