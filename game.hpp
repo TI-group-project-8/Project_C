@@ -1,4 +1,4 @@
-//#include "pubsub.h"
+#include "pubsub.h"
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
 #include <stdio.h>
