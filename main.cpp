@@ -25,13 +25,13 @@ string naamplayer2;
 int p1score=0;
 int p2score=0;
 
-void onrecieve(string message){
-    inputp2=message;}
+//void onrecieve(string message){
+    //inputp2=message;}
 
 void startrps(){
     while(true){
-        publisher p(naamplayer1);
-        subscription s(naamplayer2, onrecieve);
+        //publisher p(naamplayer1);
+        //subscription s(naamplayer2, onrecieve);
         string inputp1="";
         string steen="steen";
         string papier="papier";
@@ -43,7 +43,7 @@ void startrps(){
         if(inputp1=="exit"){
             break;
         }else {
-            p.send(inputp1);
+            //p.send(inputp1);
         }
         while(inputp2==""){
             sleep(0.1);}
@@ -85,7 +85,7 @@ void startrps(){
 }
 
 bool find(int element, const vector<int> & kleuren){
-    for(int i = 0; i < kleuren.size(); i++){
+    for(unsigned int i = 0; i < kleuren.size(); i++){
         if(element == kleuren[i]){
             return true;
         }
@@ -94,19 +94,31 @@ bool find(int element, const vector<int> & kleuren){
 }
 
 void mastermind(const vector<int> & kleuren){
+    int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+
     vector<int> kleurenTemp = {};
     vector<int> kleurenInput = {};
-    int kleurInput = -1;
+    
     int zwart = 0;
     int wit = 0;
 
-    for(unsigned int i = 0; i < kleuren.size(); i++){
-        cout << "Voer een kleur in: ";
-        cin >> kleurInput;
-        kleurenInput.push_back(kleurInput);
-    }
-
-    for(unsigned int i = 0; i < kleuren.size(); i++){
+   for(unsigned int j = 9; j >= 0; j--){
+     schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+     schrijfNaarDigit(j, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+     cout<<"Raad de kleuren.\n";
+     vector<int> kleurenInput = inputknoppen();
+     schrijfNaarLEDStrip(kleurenInput);
+     if(kleuren == kleurenInput){
+         schrijfNaarLCD(lcd, "Goed geraden!", 0, 0, 5);
+         cout << "Goed geraden!\n";
+         break;
+     }
+     else if(j == 0){
+         schrijfNaarLCD(lcd, "Helaas, je hebt verloren", 0, 0, 5);
+         cout << "Helaas, je hebt verloren.\n";
+         break;
+     }
+     for(unsigned int i = 0; i < kleuren.size(); i++){
         if(kleurenInput[i] == kleuren[i]){
             kleurenTemp.push_back(kleurenInput[i]);
             zwart++;
@@ -115,14 +127,18 @@ void mastermind(const vector<int> & kleuren){
             kleurenTemp.push_back(kleurenInput[i]);
             wit++;
         }
-    }
-    cout << zwart << '\n' << wit;
+     }
+     schrijfNaarLCD(lcd, "zwart: " + to_string(zwart), 0, 0, 5);
+     schrijfNaarLCD(lcd, "wit: " + to_string(wit), 0, 0, 5);
+     zwart = 0;
+     wit = 0;
+   }
 }
 
 int main() {
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
-    //int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+   // int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
 
     pinMode(digitA, OUTPUT);
     pinMode(digitB, OUTPUT);
@@ -132,43 +148,23 @@ int main() {
     pinMode(digitF, OUTPUT);
     pinMode(digitG, OUTPUT);
 
-<<<<<<< Updated upstream
-    cout<<"voer je eigen naam in\n";
-    cin>>naamplayer1;
-    cout<<"voer de naam van je medespeler in\n";
-    cin>>naamplayer2;
-    startrps();
-    
-    cout<<"De score van speler 1 is: "<<p1score<<"!\n";
-    cout<<"De score van speler 2 is: "<<p2score<<"!\n";
-=======
+    //cout<<"voer je eigen naam in\n";
+    //cin>>naamplayer1;
+    //cout<<"voer de naam van je medespeler in\n";
+    //cin>>naamplayer2;
     //startrps();
+
     //cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     //cout<<"De score van speler 2 is: "<<p2score<<"!\n";
 
-    vector<int> kleuren = {};
-    int kleur = -1;
-    for(unsigned int i = 0; i < 4; i++){
-        cout << "Voer een kleur in: ";
-        cin >> kleur;
-        kleuren.push_back(kleur);
-    }
-
-    cout << '\n';
-
+    vector<int> kleuren = inputknoppen();
+    cout<<"De andere speler moet nu uw code raden\n";
     mastermind(kleuren);
 
->>>>>>> Stashed changes
-    schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
-    schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
-    schrijfNaarLEDStrip({0, 1, 3, 2});
-    sleep(2);
-    schrijfNaarLEDStrip({-1, -1, -1, -1});
-
-    for(unsigned int i = 0; i < 10; i++){
-        schrijfNaarDigit(i, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
-        sleep(1);
-        schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
-    }
+    //schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
+    //schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
+    //schrijfNaarLEDStrip({0, 1, 3, 2});
+    //sleep(2);
+    //schrijfNaarLEDStrip({-1, -1, -1, -1});
 
 }

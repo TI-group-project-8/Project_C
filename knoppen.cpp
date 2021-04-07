@@ -3,7 +3,8 @@
 #include<vector>
 using namespace std;
 
-void inputknoppen(vector<int>&kleuren){
+vector<int> inputknoppen(){
+vector<int> kleuren = {};
 
 //set de pinnen
 int paars=29;
@@ -38,7 +39,7 @@ bool rednow=LOW;
 bool yellownow=LOW;
 
 //vector om kleuren in op te slaan
-vector<int> kleuren={};
+
 
 //Opslaan eerste kleur in een vector
 for (;;){
@@ -230,7 +231,7 @@ bool yellownow=digitalRead(geel);
 //Opslaan laaste kleur in een vector
 for (;;){
 	
-cout<<"Druk de knop in voor de laaste kleur: \n";
+cout<<"Druk de knop in voor de laatste kleur: \n";
 delay(4000);
 
 //lezen input van knop
@@ -287,8 +288,8 @@ bool yellownow=digitalRead(geel);
 	yellowthen = yellownow;
 	if(kleuren.size()==4){
 		
-	 cout<<"De ander speler moet nu uw kleurcode raden \n";
 	 break;
 	}
+    }
+    return kleuren;
 }
-
