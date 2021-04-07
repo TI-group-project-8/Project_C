@@ -148,12 +148,12 @@ int main() {
     pinMode(digitF, OUTPUT);
     pinMode(digitG, OUTPUT);
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     //cout<<"voer je eigen naam in\n";
     //cin>>naamplayer1;
     //cout<<"voer de naam van je medespeler in\n";
     //cin>>naamplayer2;
-=======
+//=======
 //<<<<<<< Updated upstream
     cout<<"voer je eigen naam in\n";
     cin>>naamplayer1;
@@ -164,7 +164,7 @@ int main() {
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
 //=======
->>>>>>> e843ad4a0a45d2b9861fb3fc08b04cd21f49577e
+//>>>>>>> e843ad4a0a45d2b9861fb3fc08b04cd21f49577e
     //startrps();
 
     //cout<<"De score van speler 1 is: "<<p1score<<"!\n";
@@ -174,13 +174,13 @@ int main() {
     cout<<"De andere speler moet nu uw code raden\n";
     mastermind(kleuren);
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     //schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
     //schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
     //schrijfNaarLEDStrip({0, 1, 3, 2});
     //sleep(2);
     //schrijfNaarLEDStrip({-1, -1, -1, -1});
-=======
+//=======
 //>>>>>>> Stashed changes
     schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
     schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
@@ -193,6 +193,6 @@ int main() {
         sleep(1);
         schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
     }
->>>>>>> e843ad4a0a45d2b9861fb3fc08b04cd21f49577e
+//>>>>>>> e843ad4a0a45d2b9861fb3fc08b04cd21f49577e
 
 }
