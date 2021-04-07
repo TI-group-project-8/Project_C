@@ -83,6 +83,42 @@ void startrps(){
         }
     }
 }
+
+bool find(int element, const vector<int> & kleuren){
+    for(int i = 0; i < kleuren.size(); i++){
+        if(element == kleuren[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
+void mastermind(const vector<int> & kleuren){
+    vector<int> kleurenTemp = {};
+    vector<int> kleurenInput = {};
+    int kleurInput = -1;
+    int zwart = 0;
+    int wit = 0;
+
+    for(unsigned int i = 0; i < kleuren.size(); i++){
+        cout << "Voer een kleur in: ";
+        cin >> kleurInput;
+        kleurenInput.push_back(kleurInput);
+    }
+
+    for(unsigned int i = 0; i < kleuren.size(); i++){
+        if(kleurenInput[i] == kleuren[i]){
+            kleurenTemp.push_back(kleurenInput[i]);
+            zwart++;
+        }
+        else if(find(kleurenInput[i], kleuren) && !find(kleurenInput[i], kleurenTemp)){
+            kleurenTemp.push_back(kleurenInput[i]);
+            wit++;
+        }
+    }
+    cout << zwart << '\n' << wit;
+}
+
 int main() {
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
@@ -96,6 +132,7 @@ int main() {
     pinMode(digitF, OUTPUT);
     pinMode(digitG, OUTPUT);
 
+<<<<<<< Updated upstream
     cout<<"voer je eigen naam in\n";
     cin>>naamplayer1;
     cout<<"voer de naam van je medespeler in\n";
@@ -104,6 +141,24 @@ int main() {
     
     cout<<"De score van speler 1 is: "<<p1score<<"!\n";
     cout<<"De score van speler 2 is: "<<p2score<<"!\n";
+=======
+    //startrps();
+    //cout<<"De score van speler 1 is: "<<p1score<<"!\n";
+    //cout<<"De score van speler 2 is: "<<p2score<<"!\n";
+
+    vector<int> kleuren = {};
+    int kleur = -1;
+    for(unsigned int i = 0; i < 4; i++){
+        cout << "Voer een kleur in: ";
+        cin >> kleur;
+        kleuren.push_back(kleur);
+    }
+
+    cout << '\n';
+
+    mastermind(kleuren);
+
+>>>>>>> Stashed changes
     schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
     schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
     schrijfNaarLEDStrip({0, 1, 3, 2});
