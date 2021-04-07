@@ -25,13 +25,13 @@ string naamplayer2;
 int p1score=0;
 int p2score=0;
 
-//void onrecieve(string message){
-    //inputp2=message;}
+void onrecieve(string message){
+    inputp2=message;}
 
 void startrps(){
     while(true){
-        //publisher p(naamplayer1);
-        //subscription s(naamplayer2, onrecieve);
+        publisher p(naamplayer1);
+        subscription s(naamplayer2, onrecieve);
         string inputp1="";
         string steen="steen";
         string papier="papier";
@@ -43,7 +43,7 @@ void startrps(){
         if(inputp1=="exit"){
             break;
         }else {
-            //p.send(inputp1);
+            p.send(inputp1);
         }
         while(inputp2==""){
             sleep(0.1);}
