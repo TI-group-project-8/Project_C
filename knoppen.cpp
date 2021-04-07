@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-int main(void){
+void inputknoppen(vector<int>&kleuren){
 
 //set de pinnen
 int paars=29;
@@ -292,9 +292,3 @@ bool yellownow=digitalRead(geel);
 	}
 }
 
-
-for(unsigned int i = 0; i < kleuren.size(); i++){
-	cout<<kleuren[i];
-	}
-	cout<<"\n";
-}
