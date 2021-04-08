@@ -94,6 +94,13 @@ bool find(int element, const vector<int> & kleuren){
 void mastermind(const vector<int> & kleuren){
     int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
 
+    ofstream myfile;
+    myfile.open("mastercode.txt", ofstream::app);
+    for (int p = 0; p < kleuren.size(); ++p) {
+        myfile << kleuren[p];
+    }
+    myfile.close();
+
     vector<int> kleurenTemp = {};
     vector<int> kleurenInput = {};
     
@@ -125,9 +132,28 @@ void mastermind(const vector<int> & kleuren){
             kleurenTemp.push_back(kleurenInput[i]);
             wit++;
         }
+
+        //        hier kleuren naar gui
+         ofstream myfile;
+         myfile.open("kleur.txt", ofstream::app);
+         for (int k = 0; k < kleuren.size(); ++k) {
+             myfile << kleurenInput[k];
+         }
+         myfile<<endl;
+         myfile.close();
+
+
      }
      schrijfNaarLCD(lcd, "zwart: " + to_string(zwart), 0, 0, 5);
      schrijfNaarLCD(lcd, "wit: " + to_string(wit), 0, 0, 5);
+
+//     hier zwart en wit naar de gui
+       ofstream myfile;
+       myfile.open("zwartwit.txt", ofstream::app);
+       myfile << wit;
+       myfile << zwart <<endl;
+       myfile.close();
+
      zwart = 0;
      wit = 0;
    }
