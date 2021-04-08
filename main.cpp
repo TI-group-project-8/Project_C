@@ -79,7 +79,7 @@ void startrps(){
         inputp2="";
         ofstream datafile;
         datafile.open("rpsdata.txt");
-        datafile<<winner+"\n"+to_string(p1score)+"\n"+to_string(p2score);
+        datafile<<winner+"\n"+naamplayer1+" score: "+to_string(p1score)+"\n"+naamplayer2+" score: "+to_string(p2score);
         datafile.close();
         winner=" ";
 }
