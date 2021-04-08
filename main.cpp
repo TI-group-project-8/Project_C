@@ -20,8 +20,8 @@ int digitF = 3;
 int digitG = 13;
 
 string inputp2="";
-string naamplayer1;
-string naamplayer2;
+string naamplayer1="";
+string naamplayer2="";
 int p1score=0;
 int p2score=0;
 
@@ -29,16 +29,13 @@ void onrecieve(string message){
     inputp2=message;}
 
 void startrps(){
-    cout<<"voer je eigen naam in\n";
-    cin>>naamplayer1;
-    cout<<"voer de naam van je medespeler in\n";
-    cin>>naamplayer2;
         publisher p(naamplayer1);
         subscription s(naamplayer2, onrecieve);
         string inputp1="";
         string steen="steen";
         string papier="papier";
         string schaar= "schaar";
+        string winner=" ";
         inputp1="";
         inputp2="";
         cout<<"Kies uit: steen/papier/schaar\n";
@@ -47,39 +44,44 @@ void startrps(){
         while(inputp2==""){
             sleep(0.1);}
         if((inputp1==steen)&&(inputp2==steen)){
-            cout<<"Gelijkspel\n";}
+            winner="Gelijkspel";}
         else if((inputp1==steen)&&(inputp2==papier)){
-            cout<<naamplayer2<<" wint!\n";
+            winner=naamplayer2+" wint!";
             p2score++;}
         else if((inputp1==steen)&&(inputp2==schaar)){
-            cout<<naamplayer1<<" wint!\n";
+            winner=naamplayer1+" wint!";
             p1score++;}
 
 
         else if((inputp1==papier)&&(inputp2==steen)){
-            cout<<naamplayer1<<" wint!\n";
+            winner=naamplayer1+" wint!";
             p1score++;}
         else if((inputp1==papier)&&(inputp2==papier)){
-            cout<<"Gelijkspel\n";}
+            winner="Gelijkspel";}
         else if((inputp1==papier)&&(inputp2==schaar)){
-            cout<<naamplayer2<<" wint!\n";
+            winner=naamplayer2+" wint!";
             p2score++;}
 
 
         else if((inputp1==schaar)&&(inputp2==steen)){
-            cout<<naamplayer2<<" wint!\n";
+            winner=naamplayer2+" wint!";
             p2score++;}
         else if((inputp1==schaar)&&(inputp2==papier)){
-            cout<<naamplayer1<<" wint!\n";
+            winner=naamplayer1+" wint!";
             p1score++;}
         else if((inputp1==schaar)&&(inputp2==schaar)){
-            cout<<"Gelijkspel\n";}
+            winner="Gelijkspel";}
 
         else{
-            cout<<"Er zijn ongeldige waardes ingevoerd\n";
+            winner="Er zijn ongeldige waardes ingevoerd";}
+        cout<<winner<<"\n";
         inputp1="";
         inputp2="";
-        }
+        ofstream datafile;
+        datafile.open("rpsdata.txt");
+        datafile<<winner+"\n"+to_string(p1score)+"\n"+to_string(p2score);
+        datafile.close();
+        winner=" ";
 }
 
 bool find(int element, const vector<int> & kleuren){
@@ -171,6 +173,10 @@ int main() {
     pinMode(digitF, OUTPUT);
     pinMode(digitG, OUTPUT);
 
+    cout<<"voer je eigen naam in\n";
+    cin>>naamplayer1;
+    cout<<"voer de naam van je medespeler in\n";
+    cin>>naamplayer2;
     while(true){
         string keuze;
     cout<<"Kies tussen mastermind (m) en steen-papier-schaar (sps), of typ \"exit\" om te stoppen ";
@@ -181,13 +187,13 @@ int main() {
     else if(keuze=="sps"){
     startrps();}
     else if(keuze=="exit"){break;}
-    else{cout<<"Er zijn ongeldige waardes ingevoerd";}
+    else{cout<<"Er zijn ongeldige waardes ingevoerd\n";}
     
-    cout<<"De score van speler 1 is: "<<p1score<<"!\n";
-    cout<<"De score van speler 2 is: "<<p2score<<"!\n";
+    cout<<"De score van "<<naamplayer1<<" is: "<<p1score<<"!\n";
+    cout<<"De score van "<<naamplayer2<<" is: "<<p2score<<"!\n";
 
-    schrijfNaarLCD(lcd, "score p1: " + to_string(p1score), 0, 0, 5);
-    schrijfNaarLCD(lcd, "score p2: " + to_string(p2score), 0, 0, 5);
+    schrijfNaarLCD(lcd, naamplayer1+" score: " + to_string(p1score), 0, 0, 5);
+    schrijfNaarLCD(lcd, naamplayer2+" score: " + to_string(p2score), 0, 0, 5);
     schrijfNaarLEDStrip({0, 1, 3, 2});
     sleep(2);
     schrijfNaarLEDStrip({-1, -1, -1, -1});
