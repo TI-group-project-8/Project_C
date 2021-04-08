@@ -96,7 +96,7 @@ void mastermind(const vector<int> & kleuren){
 
     ofstream myfile;
     myfile.open("mastercode.txt", ofstream::app);
-    for (int p = 0; p < kleuren.size(); ++p) {
+    for (unsigned int p = 0; p < kleuren.size(); ++p) {
         myfile << kleuren[p];
     }
     myfile.close();
@@ -136,7 +136,7 @@ void mastermind(const vector<int> & kleuren){
         //        hier kleuren naar gui
          ofstream myfile;
          myfile.open("kleur.txt", ofstream::app);
-         for (int k = 0; k < kleuren.size(); ++k) {
+         for (unsigned int k = 0; k < kleuren.size(); ++k) {
              myfile << kleurenInput[k];
          }
          myfile<<endl;
