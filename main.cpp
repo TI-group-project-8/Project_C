@@ -2,7 +2,6 @@
 #include <iostream>
 using namespace std;
 
-//Set-up pinnen LCD
 int lcdRS = 25;
 int lcdE = 24;
 int lcdD4 = 23;
@@ -12,7 +11,6 @@ int lcdD7 = 30;
 
 //Pinnen Wpi 14 (clock pin) en 12 (data pin) zijn gebruikt voor de LED-strip
 
-//Set-up pinnen Digit Display
 int digitA = 2;
 int digitB = 0;
 int digitC = 8;
@@ -21,19 +19,28 @@ int digitE = 7;
 int digitF = 3;
 int digitG = 13;
 
-//Set-up spelers en spelerscore
 string inputp2="";
 string naamplayer1="";
 string naamplayer2="";
 int p1score=0;
 int p2score=0;
+vector<int> kleurenvoorp2;
+vector<int> kleuren;
 
 void onrecieve(string message){
+    cout<<message;
+    if(message=="p1won"){
+        p2score++;}
+    else if(message.size()!=4){
     inputp2=message;}
+    else{for(unsigned int i=0; i<4; i++){
+        kleuren.push_back(int(message[i]-48));
+    }
+}}
 
 void startrps(){
-        publisher p(naamplayer1);
-        subscription s(naamplayer2, onrecieve);
+    publisher p(naamplayer1);
+    subscription s(naamplayer2, onrecieve);
         string inputp1="";
         string steen="steen";
         string papier="papier";
@@ -82,7 +89,7 @@ void startrps(){
         inputp2="";
         ofstream datafile;
         datafile.open("rpsdata.txt");
-        datafile<<winner+"\n"+naamplayer1+" score: "+to_string(p1score)+"\n"+naamplayer2+" score: "+to_string(p2score);
+        datafile<<winner;
         datafile.close();
         winner=" ";
 }
@@ -97,6 +104,9 @@ bool find(int element, const vector<int> & kleuren){
 }
 
 void mastermind(const vector<int> & kleuren){
+    publisher p(naamplayer1);
+    subscription s(naamplayer2, onrecieve);
+    sleep(5);
     int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
 
     ofstream myfile;
@@ -108,7 +118,7 @@ void mastermind(const vector<int> & kleuren){
 
     vector<int> kleurenTemp = {};
     vector<int> kleurenInput = {};
-
+    
     int zwart = 0;
     int wit = 0;
 
@@ -119,19 +129,15 @@ void mastermind(const vector<int> & kleuren){
      vector<int> kleurenInput = inputknoppen();
      schrijfNaarLEDStrip(kleurenInput);
      if(kleuren == kleurenInput){
-         cout << "Goed geraden!\n";
          schrijfNaarLCD(lcd, "Goed geraden!", 0, 0, 5);
-         p2score++;
-         schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
-         schrijfNaarLEDStrip({-1, -1, -1, -1});
+         cout << "Goed geraden!\n";
+         p.send("p1won");
+         p1score++;
          break;
      }
      else if(j == 0){
-         cout << "Helaas, je hebt verloren.\n";
          schrijfNaarLCD(lcd, "Helaas, je hebt verloren", 0, 0, 5);
-         p1score++;
-         schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
-         schrijfNaarLEDStrip({-1, -1, -1, -1});
+         cout << "Helaas, je hebt verloren.\n";
          break;
      }
      for(unsigned int i = 0; i < kleuren.size(); i++){
@@ -170,6 +176,24 @@ void mastermind(const vector<int> & kleuren){
    }
 }
 
+void startmm(){
+    kleuren.clear();
+    publisher p(naamplayer1);
+    subscription s(naamplayer2, onrecieve);
+    sleep(5);
+    vector<int> kleurenvoorp2 = inputknoppen();
+        //vector<int> kleurenvoorp2 = {1,2,3,4};
+        string kleurmessage="";
+        for(unsigned int i=0; i<kleurenvoorp2.size(); i++){
+            kleurmessage+=to_string(kleurenvoorp2[i]);
+        }
+    p.send(kleurmessage);
+    cout<<"De andere speler moet nu uw code raden\n";
+    while(kleuren.size()!=4){;
+        sleep(0.1);}
+    mastermind(kleuren);
+}
+
 int main() {
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
@@ -187,23 +211,33 @@ int main() {
     cout<<"voer de naam van je medespeler in\n";
     cin>>naamplayer2;
     while(true){
+        kleuren.clear();
         string keuze;
     cout<<"Kies tussen mastermind (m) en steen-papier-schaar (sps), of typ \"exit\" om te stoppen ";
     cin>>keuze;
-    if(keuze=="m"){
-        vector<int> kleuren = inputknoppen();
-        cout<<"De andere speler moet nu uw code raden\n";
-        mastermind(kleuren);
-    }
+    if(keuze=="m"){startmm();
+        }
     else if(keuze=="sps"){
     startrps();}
     else if(keuze=="exit"){break;}
     else{cout<<"Er zijn ongeldige waardes ingevoerd\n";}
-
+    
     cout<<"De score van "<<naamplayer1<<" is: "<<p1score<<"!\n";
     cout<<"De score van "<<naamplayer2<<" is: "<<p2score<<"!\n";
-
+    ofstream scorefile;
+    scorefile.open("scores.txt");
+    scorefile<<naamplayer1+" score: "+to_string(p1score)+"\n"+naamplayer2+" score: "+to_string(p2score);
+    scorefile.close();
     schrijfNaarLCD(lcd, naamplayer1+" score: " + to_string(p1score), 0, 0, 5);
     schrijfNaarLCD(lcd, naamplayer2+" score: " + to_string(p2score), 0, 0, 5);
+    schrijfNaarLEDStrip({0, 1, 3, 2});
+    sleep(2);
+    schrijfNaarLEDStrip({-1, -1, -1, -1});
+
+    for(unsigned int i = 0; i < 10; i++){
+        schrijfNaarDigit(i, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+        sleep(1);
+        schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
     }
+}
 }
