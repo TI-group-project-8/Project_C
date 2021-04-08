@@ -148,7 +148,9 @@ def gokker():
 
 
 def kleur():
+    """vult de kleurenfeedback weer"""
     def soep(ronde, kleurnr):
+        """geeft de goede kleur terug"""
         try:
             f = open("kleur", "r")
             a = f.readlines()[ronde]
@@ -547,6 +549,7 @@ def kleur():
 
 
 def checks():
+    """de zwarte en witte feedback"""
     def reader(ronde, kleursoort):
         try:
             f = open("zwartwit", "r")
@@ -743,24 +746,27 @@ def checks():
 
 
 def codemaker():
+    """maakt codemakerframe"""
     while True:
         f = open("mastercode", "r")
         d = f.read()
         length = len(d)
         f.close()
 
+
+
         if length != 4:
             zoep = "geef nu je code op"
 
         else:
             zoep = "je code kan nu gekraakt worden"
-        wacht = Label(master=codemakerframe,
+        status_mastercode = Label(master=codemakerframe,
                       text=zoep,
                       background="grey",
                       foreground="black",
                       font=('arial', 20, "bold"),
                       width=40)
-        wacht.grid(row=1, column=1)
+        status_mastercode.grid(row=1, column=1)
         time.sleep(1)
         root.update()
 
@@ -806,9 +812,11 @@ root.bind("<Escape>", lambda e: e.widget.quit())
 
 gokkerframe = Frame(master=root, background="grey")
 gokkerframe.grid(row=0, column=0)
+# hier wordt de gokkerframe gemaakt
 
 codemakerframe = Frame(master=root, background="grey")
 codemakerframe.grid(row=0, column=0)
+# hier wordt de codemakerframe gemaakt
 
 hoofdframe = Frame(master=root, background="grey")
 hoofdframe.grid(row=0, column=0)
