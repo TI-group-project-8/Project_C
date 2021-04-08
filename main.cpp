@@ -28,7 +28,6 @@ vector<int> kleurenvoorp2;
 vector<int> kleuren;
 
 void onrecieve(string message){
-    cout<<message;
     if(message=="p1won"){
         p2score++;}
     else if(message.size()!=4){
@@ -131,7 +130,10 @@ void mastermind(const vector<int> & kleuren){
      if(kleuren == kleurenInput){
          schrijfNaarLCD(lcd, "Goed geraden!", 0, 0, 5);
          cout << "Goed geraden!\n";
+         publisher p(naamplayer1);
+         subscription s(naamplayer2, onrecieve);
          p.send("p1won");
+         sleep(2);
          p1score++;
          break;
      }
@@ -195,6 +197,7 @@ void startmm(){
 }
 
 int main() {
+    
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
    int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
@@ -211,6 +214,8 @@ int main() {
     cout<<"voer de naam van je medespeler in\n";
     cin>>naamplayer2;
     while(true){
+    int tmpscorep1=p1score;
+    int tmpscorep2=p2score;
         kleuren.clear();
         string keuze;
     cout<<"Kies tussen mastermind (m) en steen-papier-schaar (sps), of typ \"exit\" om te stoppen ";
@@ -221,7 +226,8 @@ int main() {
     startrps();}
     else if(keuze=="exit"){break;}
     else{cout<<"Er zijn ongeldige waardes ingevoerd\n";}
-    
+    if(p1score>tmpscorep1){p1score=tmpscorep1+1;}
+    if(p2score>tmpscorep1){p2score=tmpscorep2+1;}
     cout<<"De score van "<<naamplayer1<<" is: "<<p1score<<"!\n";
     cout<<"De score van "<<naamplayer2<<" is: "<<p2score<<"!\n";
     ofstream scorefile;
