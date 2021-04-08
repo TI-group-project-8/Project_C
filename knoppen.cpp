@@ -38,7 +38,6 @@ bool bluenow=LOW;
 bool rednow=LOW;
 bool yellownow=LOW;
 
-//vector om kleuren in op te slaan
 
 
 //Opslaan eerste kleur in een vector
