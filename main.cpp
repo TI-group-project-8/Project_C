@@ -127,7 +127,7 @@ void mastermind(const vector<int> & kleuren){
 
     //Set-up GUI file
     ofstream myfile;
-    myfile.open("mastercode.txt", ofstream::app);
+    myfile.open("mastercode", ofstream::app);
     for (unsigned int p = 0; p < kleuren.size(); ++p) {
         myfile << kleuren[p];
     }
@@ -183,13 +183,13 @@ void mastermind(const vector<int> & kleuren){
         }
 
          //Schrijf de kleurcode naar de GUI file
-         ofstream myfile;
-         myfile.open("kleur.txt", ofstream::app);
+         ofstream myfile_2;
+         myfile_2.open("kleur", ofstream::app);
          for (unsigned int k = 0; k < kleuren.size(); ++k) {
-             myfile << kleurenInput[k];
+             myfile_2 << kleurenInput[k];
          }
-         myfile<<endl;
-         myfile.close();
+         myfile_2<<endl;
+         myfile_2.close();
 
 
      }
@@ -198,11 +198,11 @@ void mastermind(const vector<int> & kleuren){
      schrijfNaarLCD(lcd, "wit: " + to_string(wit), 0, 0, 5);
 
        //Schrijft de zwarte en witte pinnen naar de GUI file
-       ofstream myfile;
-       myfile.open("zwartwit.txt", ofstream::app);
-       myfile << wit;
-       myfile << zwart <<endl;
-       myfile.close();
+       ofstream myfile_3;
+       myfile_3.open("zwartwit", ofstream::app);
+       myfile_3 << wit;
+       myfile_3 << zwart <<endl;
+       myfile_3.close();
 
        //Reset zwart en wit
        zwart = 0;
