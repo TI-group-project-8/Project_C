@@ -10,7 +10,7 @@ def gokker():
                        text="kleur 1",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=10,
                        height=3)
         kleur1.grid(row=1, column=1)
@@ -18,7 +18,7 @@ def gokker():
                        text="kleur 2",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=10,
                        height=3)
         kleur2.grid(row=1, column=2)
@@ -26,7 +26,7 @@ def gokker():
                        text="kleur 3",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=10,
                        height=3)
         kleur3.grid(row=1, column=3)
@@ -34,7 +34,7 @@ def gokker():
                        text="kleur 4",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=10,
                        height=3)
         kleur4.grid(row=1, column=4)
@@ -45,7 +45,7 @@ def gokker():
                        text="ronde 1",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde1.grid(row=2, column=0)
@@ -54,7 +54,7 @@ def gokker():
                        text="ronde 2",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde2.grid(row=3, column=0)
@@ -63,7 +63,7 @@ def gokker():
                        text="ronde 3",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde3.grid(row=4, column=0)
@@ -72,7 +72,7 @@ def gokker():
                        text="ronde 4",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde4.grid(row=5, column=0)
@@ -81,7 +81,7 @@ def gokker():
                        text="ronde 5",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde5.grid(row=6, column=0)
@@ -90,7 +90,7 @@ def gokker():
                        text="ronde 6",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde6.grid(row=7, column=0)
@@ -99,7 +99,7 @@ def gokker():
                        text="ronde 7",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde7.grid(row=8, column=0)
@@ -108,7 +108,7 @@ def gokker():
                        text="ronde 8",
                        background='#ffffff',
                        foreground='#001066',
-                       font=("Arial", 12, 'bold'),
+                       font=("Arial", 5, 'bold'),
                        width=17,
                        height=3)
         ronde8.grid(row=9, column=0)
@@ -117,7 +117,7 @@ def gokker():
                        text="ronde 9",
                        background='#ffffff',
                        foreground='#001066',
-                       font=('Arial', 12, 'bold'),
+                       font=('Arial', 5, 'bold'),
                        width=17,
                        height=3)
         ronde9.grid(row=10, column=0)
@@ -126,7 +126,7 @@ def gokker():
                         text="ronde 10",
                         background='#ffffff',
                         foreground='#001066',
-                        font=('Arial', 12, 'bold'),
+                        font=('Arial', 5, 'bold'),
                         width=17,
                         height=3)
         ronde10.grid(row=11, column=0)
@@ -134,7 +134,7 @@ def gokker():
         # ------------------terugknop------------------------
         terug = Button(master=gokkerframe,
                        text='terug naar hoofdmenu',
-                       font=('arial', 12, 'bold'),
+                       font=('arial', 5, 'bold'),
                        command=toonhoofdframe,
                        background='white',
                        foreground='black',
@@ -181,7 +181,7 @@ def kleur():
                          text=" ",
                          background=soep(0, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde1kolom1.grid(row=2, column=1)
@@ -190,7 +190,7 @@ def kleur():
                          text=" ",
                          background=soep(0, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde1kolom2.grid(row=2, column=2)
@@ -199,7 +199,7 @@ def kleur():
                          text=" ",
                          background=soep(0, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde1kolom3.grid(row=2, column=3)
@@ -208,7 +208,7 @@ def kleur():
                          text=" ",
                          background=soep(0, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde1kolom4.grid(row=2, column=4)
@@ -218,7 +218,7 @@ def kleur():
                          text=" ",
                          background=soep(1, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde2kolom1.grid(row=3, column=1)
@@ -227,7 +227,7 @@ def kleur():
                          text=" ",
                          background=soep(1, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde2kolom2.grid(row=3, column=2)
@@ -236,7 +236,7 @@ def kleur():
                          text=" ",
                          background=soep(1, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde2kolom3.grid(row=3, column=3)
@@ -245,7 +245,7 @@ def kleur():
                          text=" ",
                          background=soep(1, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde2kolom4.grid(row=3, column=4)
@@ -255,7 +255,7 @@ def kleur():
                          text=" ",
                          background=soep(2, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde3kolom1.grid(row=4, column=1)
@@ -264,7 +264,7 @@ def kleur():
                          text=" ",
                          background=soep(2, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde3kolom2.grid(row=4, column=2)
@@ -273,7 +273,7 @@ def kleur():
                          text=" ",
                          background=soep(2, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde3kolom3.grid(row=4, column=3)
@@ -282,7 +282,7 @@ def kleur():
                          text=" ",
                          background=soep(2, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde3kolom4.grid(row=4, column=4)
@@ -292,7 +292,7 @@ def kleur():
                          text=" ",
                          background=soep(3, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde4kolom1.grid(row=5, column=1)
@@ -301,7 +301,7 @@ def kleur():
                          text=" ",
                          background=soep(3, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde3kolom2.grid(row=5, column=2)
@@ -310,7 +310,7 @@ def kleur():
                          text=" ",
                          background=soep(3, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde4kolom3.grid(row=5, column=3)
@@ -319,7 +319,7 @@ def kleur():
                          text=" ",
                          background=soep(3, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde4kolom4.grid(row=5, column=4)
@@ -329,7 +329,7 @@ def kleur():
                          text=" ",
                          background=soep(4, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde5kolom1.grid(row=6, column=1)
@@ -338,7 +338,7 @@ def kleur():
                          text=" ",
                          background=soep(4, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde5kolom2.grid(row=6, column=2)
@@ -347,7 +347,7 @@ def kleur():
                          text=" ",
                          background=soep(4, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde5kolom3.grid(row=6, column=3)
@@ -356,7 +356,7 @@ def kleur():
                          text=" ",
                          background=soep(4, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde5kolom4.grid(row=6, column=4)
@@ -366,7 +366,7 @@ def kleur():
                          text=" ",
                          background=soep(5, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde6kolom1.grid(row=7, column=1)
@@ -375,7 +375,7 @@ def kleur():
                          text=" ",
                          background=soep(5, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde6kolom2.grid(row=7, column=2)
@@ -384,7 +384,7 @@ def kleur():
                          text=" ",
                          background=soep(5, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde6kolom3.grid(row=7, column=3)
@@ -393,7 +393,7 @@ def kleur():
                          text=" ",
                          background=soep(5, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde6kolom4.grid(row=7, column=4)
@@ -403,7 +403,7 @@ def kleur():
                          text=" ",
                          background=soep(6, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde7kolom1.grid(row=8, column=1)
@@ -412,7 +412,7 @@ def kleur():
                          text=" ",
                          background=soep(6, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde7kolom2.grid(row=8, column=2)
@@ -421,7 +421,7 @@ def kleur():
                          text=" ",
                          background=soep(6, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde7kolom3.grid(row=8, column=3)
@@ -430,7 +430,7 @@ def kleur():
                          text=" ",
                          background=soep(6, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde7kolom4.grid(row=8, column=4)
@@ -440,7 +440,7 @@ def kleur():
                          text=" ",
                          background=soep(7, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde8kolom1.grid(row=9, column=1)
@@ -449,7 +449,7 @@ def kleur():
                          text=" ",
                          background=soep(7, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde8kolom2.grid(row=9, column=2)
@@ -458,7 +458,7 @@ def kleur():
                          text=" ",
                          background=soep(7, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde8kolom3.grid(row=9, column=3)
@@ -467,7 +467,7 @@ def kleur():
                          text=" ",
                          background=soep(7, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde8kolom4.grid(row=9, column=4)
@@ -477,7 +477,7 @@ def kleur():
                          text=" ",
                          background=soep(8, 0),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde9kolom1.grid(row=10, column=1)
@@ -486,7 +486,7 @@ def kleur():
                          text=" ",
                          background=soep(8, 1),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde9kolom2.grid(row=10, column=2)
@@ -495,7 +495,7 @@ def kleur():
                          text=" ",
                          background=soep(8, 2),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde9kolom3.grid(row=10, column=3)
@@ -504,7 +504,7 @@ def kleur():
                          text=" ",
                          background=soep(8, 3),  # hier kleur van knopdruk
                          foreground="white",
-                         font=('Arial', 12, 'bold'),
+                         font=('Arial', 5, 'bold'),
                          width=10,
                          height=3)
     ronde9kolom4.grid(row=10, column=4)
@@ -515,7 +515,7 @@ def kleur():
                           text=" ",
                           background=soep(9, 0),  # hier kleur van knopdruk
                           foreground="white",
-                          font=('Arial', 12, 'bold'),
+                          font=('Arial', 5, 'bold'),
                           width=10,
                           height=3)
     ronde10kolom1.grid(row=11, column=1)
@@ -524,7 +524,7 @@ def kleur():
                           text=" ",
                           background=soep(9, 1),  # hier kleur van knopdruk
                           foreground="white",
-                          font=('Arial', 12, 'bold'),
+                          font=('Arial', 5, 'bold'),
                           width=10,
                           height=3)
     ronde10kolom2.grid(row=11, column=2)
@@ -533,7 +533,7 @@ def kleur():
                           text=" ",
                           background=soep(9, 2),  # hier kleur van knopdruk
                           foreground="white",
-                          font=('Arial', 12, 'bold'),
+                          font=('Arial', 5, 'bold'),
                           width=10,
                           height=3)
     ronde10kolom3.grid(row=11, column=3)
@@ -542,7 +542,7 @@ def kleur():
                           text=" ",
                           background=soep(9, 3),  # hier kleur van knopdruk
                           foreground="white",
-                          font=('Arial', 12, 'bold'),
+                          font=('Arial', 5, 'bold'),
                           width=10,
                           height=3)
     ronde10kolom4.grid(row=11, column=4)
@@ -567,7 +567,7 @@ def checks():
                              text=reader(0, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde1.grid(row=2, column=5)
@@ -576,7 +576,7 @@ def checks():
                              text=reader(1, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde2.grid(row=3, column=5)
@@ -585,7 +585,7 @@ def checks():
                              text=reader(2, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde3.grid(row=4, column=5)
@@ -594,7 +594,7 @@ def checks():
                              text=reader(3, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde4.grid(row=5, column=5)
@@ -603,7 +603,7 @@ def checks():
                              text=reader(4, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde5.grid(row=6, column=5)
@@ -612,7 +612,7 @@ def checks():
                              text=reader(5, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde6.grid(row=7, column=5)
@@ -621,7 +621,7 @@ def checks():
                              text=reader(6, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde7.grid(row=8, column=5)
@@ -630,7 +630,7 @@ def checks():
                              text=reader(7, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde8.grid(row=9, column=5)
@@ -639,7 +639,7 @@ def checks():
                              text=reader(8, 0),
                              background='white',
                              foreground='#001066',
-                             font=('Arial', 12, 'bold'),
+                             font=('Arial', 5, 'bold'),
                              width=10,
                              height=3)
     resultaat_ronde9.grid(row=10, column=5)
@@ -648,7 +648,7 @@ def checks():
                               text=reader(9, 0),
                               background='white',
                               foreground='#001066',
-                              font=('Arial', 12, 'bold'),
+                              font=('Arial', 5, 'bold'),
                               width=10,
                               height=3)
     resultaat_ronde10.grid(row=11, column=5)
@@ -658,7 +658,7 @@ def checks():
                                    text=reader(0, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde1_zwart.grid(row=2, column=6)
@@ -667,7 +667,7 @@ def checks():
                                    text=reader(1, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde2_zwart.grid(row=3, column=6)
@@ -676,7 +676,7 @@ def checks():
                                    text=reader(2, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde3_zwart.grid(row=4, column=6)
@@ -685,7 +685,7 @@ def checks():
                                    text=reader(3, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde4_zwart.grid(row=5, column=6)
@@ -694,7 +694,7 @@ def checks():
                                    text=reader(4, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde5_zwart.grid(row=6, column=6)
@@ -703,7 +703,7 @@ def checks():
                                    text=reader(5, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde6_zwart.grid(row=7, column=6)
@@ -712,7 +712,7 @@ def checks():
                                    text=reader(6, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde7_zwart.grid(row=8, column=6)
@@ -721,7 +721,7 @@ def checks():
                                    text=reader(7, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde8_zwart.grid(row=9, column=6)
@@ -730,7 +730,7 @@ def checks():
                                    text=reader(8, 1),
                                    background='black',
                                    foreground='white',
-                                   font=('Arial', 12, 'bold'),
+                                   font=('Arial', 5, 'bold'),
                                    width=10,
                                    height=3)
     resultaat_ronde9_zwart.grid(row=10, column=6)
@@ -739,7 +739,7 @@ def checks():
                                     text=reader(9, 1),
                                     background='black',
                                     foreground='white',
-                                    font=('Arial', 12, 'bold'),
+                                    font=('Arial', 5, 'bold'),
                                     width=10,
                                     height=3)
     resultaat_ronde10_zwart.grid(row=11, column=6)
@@ -764,15 +764,15 @@ def codemaker():
                       text=zoep,
                       background="grey",
                       foreground="black",
-                      font=('arial', 20, "bold"),
-                      width=40)
+                      font=('arial', 8, "bold"),
+                      width=25)
         status_mastercode.grid(row=1, column=1)
         time.sleep(1)
         root.update()
 
         terugknop = Button(master=codemakerframe,
                            text='terug naar hoofdmenu',
-                           font=('arial', 12, 'bold'),
+                           font=('arial', 5, 'bold'),
                            command=toonhoofdframe,
                            background='white',
                            foreground='black',
@@ -825,22 +825,22 @@ hoofdframe.grid(row=0, column=0)
 
 gokkerbutton = Button(master=hoofdframe,
                       text='Ik ben gokker',
-                      font=('arial', 20),
+                      font=('arial', 5),
                       command=toongokkerframe,
                       background="white",
                       foreground="black",
                       width=10,
-                      height=5)
+                      height=3)
 gokkerbutton.grid(row=0, column=0)
 
 codemakerbutton = Button(master=hoofdframe,
                          text='Ik ben codemaker',
-                         font=('arial', 20),
+                         font=('arial', 5),
                          command=tooncodemakerframe,
                          background="white",
                          foreground="black",
                          width=10,
-                         height=5)
+                         height=3)
 codemakerbutton.grid(row=2, column=0)
 
 root.bind("<Escape>", lambda e: e.widget.quit())
