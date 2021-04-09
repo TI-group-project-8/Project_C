@@ -126,10 +126,10 @@ void mastermind(const vector<int> & kleuren){
     int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
 
     //Set-up GUI file
-    ofstream myfile;
-    myfile.open("mastercode");
-    myfile << "";
-    myfile.close();
+    ofstream myfile_1;
+    myfile_1.open("mastercode");
+    myfile_1 << "";
+    myfile_1.close();
 
 
     ofstream myfile_2;
@@ -197,21 +197,20 @@ void mastermind(const vector<int> & kleuren){
             kleurenTemp.push_back(kleurenInput[i]);
             wit++;
         }
-
-         //Schrijf de kleurcode naar de GUI file
-         ofstream myfile_2;
-         myfile_2.open("kleur", ofstream::app);
-         for (unsigned int k = 0; k < kleuren.size(); ++k) {
-             myfile_2 << kleurenInput[k];
-         }
-         myfile_2<<endl;
-         myfile_2.close();
-
-
      }
-     //Schrijf de hoeveelheid van de zwarte en witte pinnen naar de LCD
-     schrijfNaarLCD(lcd, "zwart: " + to_string(zwart), 0, 0, 5);
-     schrijfNaarLCD(lcd, "wit: " + to_string(wit), 0, 0, 5);
+
+       //Schrijf de kleurcode naar de GUI file
+       ofstream myfile_2;
+       myfile_2.open("kleur", ofstream::app);
+       for (unsigned int k = 0; k < kleuren.size(); ++k) {
+           myfile_2 << kleurenInput[k];
+       }
+       myfile_2<<endl;
+       myfile_2.close();
+
+       //Schrijf de hoeveelheid van de zwarte en witte pinnen naar de LCD
+       schrijfNaarLCD(lcd, "zwart: " + to_string(zwart), 0, 0, 5);
+       schrijfNaarLCD(lcd, "wit: " + to_string(wit), 0, 0, 5);
 
        //Schrijft de zwarte en witte pinnen naar de GUI file
        ofstream myfile_3;
