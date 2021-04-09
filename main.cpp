@@ -45,8 +45,11 @@ void onrecieve(string message){
 }}
 
 void startrps(){
+    //aanmaken publisher en subscription voor beide spelers
     publisher p(naamplayer1);
     subscription s(naamplayer2, onrecieve);
+    
+    //initializeren variabelen
         string inputp1="";
         string steen="steen";
         string papier="papier";
@@ -54,11 +57,17 @@ void startrps(){
         string winner=" ";
         inputp1="";
         inputp2="";
+        
+        //input van player1 vragen
         cout<<"Kies uit: steen/papier/schaar\n";
         cin>>inputp1;
         p.send(inputp1);
+        
+        //wachten op input van player2
         while(inputp2==""){
             sleep(0.1);}
+            
+        //vergelijken inputs
         if((inputp1==steen)&&(inputp2==steen)){
             winner="Gelijkspel";}
         else if((inputp1==steen)&&(inputp2==papier)){
@@ -90,14 +99,18 @@ void startrps(){
 
         else{
             winner="Er zijn ongeldige waardes ingevoerd";}
+            
+        //bekendmaken winnaar
         cout<<winner<<"\n";
-        inputp1="";
-        inputp2="";
+        //output naar gui
         ofstream datafile;
         datafile.open("rpsdata.txt");
         datafile<<winner;
         datafile.close();
+        //resetten variabelen
         winner=" ";
+        inputp1="";
+        inputp2="";
 }
 
 //Deze functie zoekt naar een waarde in de kleurenvector
@@ -174,6 +187,7 @@ void mastermind(const vector<int> & kleuren){
          schrijfNaarLCD(lcd, "Goed geraden!", 0, 0, 5);
          publisher p(naamplayer1);
          subscription s(naamplayer2, onrecieve);
+         //verstuur naar de 2e speler dat de puzzel opgelost is
          p.send("p1won");
          sleep(5);
          p1score++;
@@ -230,27 +244,27 @@ void mastermind(const vector<int> & kleuren){
 }
 
 void startmm(){
+    //reset variabele en start multiplayer
     kleuren.clear();
     publisher p(naamplayer1);
     subscription s(naamplayer2, onrecieve);
     sleep(5);
+    //laat de speler kleuren invoeren die de ander moet raden
     vector<int> kleurenvoorp2 = inputknoppen();
-        //vector<int> kleurenvoorp2 = {1,2,3,4};
         string kleurmessage="";
         for(unsigned int i=0; i<kleurenvoorp2.size(); i++){
             kleurmessage+=to_string(kleurenvoorp2[i]);
         }
     p.send(kleurmessage);
     cout<<"De andere speler moet nu uw code raden\n";
+    //wacht op de kleuren van speler2
     while(kleuren.size()!=4){;
         sleep(0.1);}
+    //start het spel
     mastermind(kleuren);
 }
 
 int main() {
-    ofstream scorefile;
-    scorefile.open("scores.txt");
-    scorefile<<naamplayer1+" score: "+"0"+"\n"+naamplayer2+" score: "+"0";
     //Set-up wiring Pi
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
@@ -267,15 +281,23 @@ int main() {
     pinMode(digitF, OUTPUT);
     pinMode(digitG, OUTPUT);
 
+    //vraag om de namen van speler 1 en 2
     cout<<"voer je eigen naam in\n";
     cin>>naamplayer1;
     cout<<"voer de naam van je medespeler in\n";
     cin>>naamplayer2;
+    //reset het scorebestand
+    ofstream scorefile1;
+    scorefile1.open("scores.txt");
+    scorefile1<<naamplayer1+" score: "+"0"+"\n"+naamplayer2+" score: "+"0";
+    scorefile1.close();
+    //start het spel
     while(true){
     int tmpscorep1=p1score;
     int tmpscorep2=p2score;
         kleuren.clear();
         string keuze;
+    //speler bepaalt wat hij wilt spelen
     cout<<"Kies tussen mastermind (m) en steen-papier-schaar (sps), of typ \"exit\" om te stoppen ";
     cin>>keuze;
     if(keuze=="m"){startmm();
@@ -284,8 +306,11 @@ int main() {
     startrps();}
     else if(keuze=="exit"){break;}
     else{cout<<"Er zijn ongeldige waardes ingevoerd\n";}
+    //door een bug in pubsub, of in onze code, wordt de score van de andere speler soms meerdere keren doorgegeven
+    //deze 2 lines zorgen ervoor dat de score maar met 1 punt tegelijk omhoog gaat
     if(p1score>tmpscorep1){p1score=tmpscorep1+1;}
     if(p2score>tmpscorep1){p2score=tmpscorep2+1;}
+    //output de score naar meerdere outputs
     cout<<"De score van "<<naamplayer1<<" is: "<<p1score<<"!\n";
     cout<<"De score van "<<naamplayer2<<" is: "<<p2score<<"!\n";
     ofstream scorefile;
