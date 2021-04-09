@@ -175,7 +175,7 @@ void mastermind(const vector<int> & kleuren){
          publisher p(naamplayer1);
          subscription s(naamplayer2, onrecieve);
          p.send("p1won");
-         sleep(2);
+         sleep(5);
          p1score++;
          break;
      }
@@ -248,6 +248,9 @@ void startmm(){
 }
 
 int main() {
+    ofstream scorefile;
+    scorefile.open("scores.txt");
+    scorefile<<naamplayer1+" score: "+"0"+"\n"+naamplayer2+" score: "+"0";
     //Set-up wiring Pi
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
