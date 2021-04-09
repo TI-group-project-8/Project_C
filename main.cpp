@@ -127,6 +127,22 @@ void mastermind(const vector<int> & kleuren){
 
     //Set-up GUI file
     ofstream myfile;
+    myfile.open("mastercode");
+    myfile << "";
+    myfile.close();
+
+
+    ofstream myfile_2;
+    myfile_2.open("kleur");
+    myfile_2 << "";
+    myfile_2.close();
+
+    ofstream myfile_3;
+    myfile_3.open("zwartwit");
+    myfile_3 << "";
+    myfile_3.close();
+
+    ofstream myfile;
     myfile.open("mastercode", ofstream::app);
     for (unsigned int p = 0; p < kleuren.size(); ++p) {
         myfile << kleuren[p];
