@@ -116,6 +116,7 @@ bool find(int element, const vector<int> & kleuren){
 
 //Deze functie zorgt ervoor dat het spel mastermind gespeeld kan worden
 void mastermind(const vector<int> & kleuren){
+
     //Set-up multiplayer
     publisher p(naamplayer1);
     subscription s(naamplayer2, onrecieve);
@@ -203,13 +204,14 @@ void mastermind(const vector<int> & kleuren){
        myfile << zwart <<endl;
        myfile.close();
 
-       //Reset de waarden
+       //Reset zwart en wit
        zwart = 0;
        wit = 0;
-
-       schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
-       schrijfNaarLEDStrip({-1, -1, -1, -1});
     }
+
+    //Reset de Digit Display en de LED-strip
+    schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+    schrijfNaarLEDStrip({-1, -1, -1, -1});
 }
 
 void startmm(){
