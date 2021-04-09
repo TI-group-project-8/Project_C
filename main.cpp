@@ -2,6 +2,11 @@
 #include <iostream>
 using namespace std;
 
+//compilen met:
+//g++ -Wall PracticalSocket.cpp main.cpp knoppen.cpp LCDfunctie.cpp LEDStripAansturen.cpp 
+//DigitAansturen.cpp -o main -lwiringPi -lwiringPiDev -pthread
+
+//Set-up pinnen LCD
 int lcdRS = 25;
 int lcdE = 24;
 int lcdD4 = 23;
@@ -11,6 +16,7 @@ int lcdD7 = 30;
 
 //Pinnen Wpi 14 (clock pin) en 12 (data pin) zijn gebruikt voor de LED-strip
 
+//Set-up pinnen Digit Display
 int digitA = 2;
 int digitB = 0;
 int digitC = 8;
@@ -19,6 +25,7 @@ int digitE = 7;
 int digitF = 3;
 int digitG = 13;
 
+//Set-up spelers en score
 string inputp2="";
 string naamplayer1="";
 string naamplayer2="";
@@ -93,21 +100,31 @@ void startrps(){
         winner=" ";
 }
 
+//Deze functie zoekt naar een waarde in de kleurenvector
 bool find(int element, const vector<int> & kleuren){
+    //Kijkt naar iedere waarde  in de vector
     for(unsigned int i = 0; i < kleuren.size(); i++){
+        //Als de waarde gelijk is aan element
         if(element == kleuren[i]){
+            //Return true
             return true;
         }
     }
+    //Anders return false
     return false;
 }
 
+//Deze functie zorgt ervoor dat het spel mastermind gespeeld kan worden
 void mastermind(const vector<int> & kleuren){
+    //Set-up multiplayer
     publisher p(naamplayer1);
     subscription s(naamplayer2, onrecieve);
     sleep(5);
+
+    //Set-up LCD
     int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
 
+    //Set-up GUI file
     ofstream myfile;
     myfile.open("mastercode.txt", ofstream::app);
     for (unsigned int p = 0; p < kleuren.size(); ++p) {
@@ -115,21 +132,29 @@ void mastermind(const vector<int> & kleuren){
     }
     myfile.close();
 
+    //Set-up game vars
     vector<int> kleurenTemp = {};
     vector<int> kleurenInput = {};
-    
+
     int zwart = 0;
     int wit = 0;
 
+   //Maakt 10 beurten aan
    for(unsigned int j = 9; j >= 0; j--){
+     //Schrijft beurtnummer naar Digit Display
      schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
      schrijfNaarDigit(j, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+
+     //Laat de speler de kleuren raden
      cout<<"Raad de kleuren.\n";
      vector<int> kleurenInput = inputknoppen();
      schrijfNaarLEDStrip(kleurenInput);
+
+     //Als de kleurencode geraden is, geef hiervan bericht naar LCD en scherm
+     //en verhoog de spelerscore met 1
      if(kleuren == kleurenInput){
-         schrijfNaarLCD(lcd, "Goed geraden!", 0, 0, 5);
          cout << "Goed geraden!\n";
+         schrijfNaarLCD(lcd, "Goed geraden!", 0, 0, 5);
          publisher p(naamplayer1);
          subscription s(naamplayer2, onrecieve);
          p.send("p1won");
@@ -137,11 +162,15 @@ void mastermind(const vector<int> & kleuren){
          p1score++;
          break;
      }
+
+     //Als er geen beurten meer zijn, geef bericht van verliezen naar LCD en scherm
      else if(j == 0){
-         schrijfNaarLCD(lcd, "Helaas, je hebt verloren", 0, 0, 5);
          cout << "Helaas, je hebt verloren.\n";
+         schrijfNaarLCD(lcd, "Helaas, je hebt verloren", 0, 0, 5);
          break;
      }
+
+     //Bereken het aantal zwarte en witte pinnen
      for(unsigned int i = 0; i < kleuren.size(); i++){
         if(kleurenInput[i] == kleuren[i]){
             kleurenTemp.push_back(kleurenInput[i]);
@@ -152,7 +181,7 @@ void mastermind(const vector<int> & kleuren){
             wit++;
         }
 
-        //        hier kleuren naar gui
+         //Schrijf de kleurcode naar de GUI file
          ofstream myfile;
          myfile.open("kleur.txt", ofstream::app);
          for (unsigned int k = 0; k < kleuren.size(); ++k) {
@@ -163,19 +192,24 @@ void mastermind(const vector<int> & kleuren){
 
 
      }
+     //Schrijf de hoeveelheid van de zwarte en witte pinnen naar de LCD
      schrijfNaarLCD(lcd, "zwart: " + to_string(zwart), 0, 0, 5);
      schrijfNaarLCD(lcd, "wit: " + to_string(wit), 0, 0, 5);
 
-//     hier zwart en wit naar de gui
+       //Schrijft de zwarte en witte pinnen naar de GUI file
        ofstream myfile;
        myfile.open("zwartwit.txt", ofstream::app);
        myfile << wit;
        myfile << zwart <<endl;
        myfile.close();
 
-     zwart = 0;
-     wit = 0;
-   }
+       //Reset de waarden
+       zwart = 0;
+       wit = 0;
+
+       schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
+       schrijfNaarLEDStrip({-1, -1, -1, -1});
+    }
 }
 
 void startmm(){
@@ -197,10 +231,14 @@ void startmm(){
 }
 
 int main() {
-    
+    //Set-up wiring Pi
     wiringPiSetup();
     wiringPiSPISetup(0, 6000000);
-   int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+
+    //Set-up LCD
+    int lcd = lcdInit(2, 16, 4, lcdRS, lcdE, lcdD4, lcdD5, lcdD6, lcdD7, 0, 0, 0, 0);
+
+    //Set-up pinnen Digital Display
     pinMode(digitA, OUTPUT);
     pinMode(digitB, OUTPUT);
     pinMode(digitC, OUTPUT);
@@ -236,14 +274,5 @@ int main() {
     scorefile.close();
     schrijfNaarLCD(lcd, naamplayer1+" score: " + to_string(p1score), 0, 0, 5);
     schrijfNaarLCD(lcd, naamplayer2+" score: " + to_string(p2score), 0, 0, 5);
-    schrijfNaarLEDStrip({0, 1, 3, 2});
-    sleep(2);
-    schrijfNaarLEDStrip({-1, -1, -1, -1});
-
-    for(unsigned int i = 0; i < 10; i++){
-        schrijfNaarDigit(i, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
-        sleep(1);
-        schrijfNaarDigit(-1, digitA, digitB, digitC, digitD, digitE, digitF, digitG);
     }
-}
 }
